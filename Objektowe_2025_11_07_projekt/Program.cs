@@ -51,7 +51,7 @@ namespace Objektowe_2025_11_07_projekt
                 ilesztuk = ZwrocPierwsze(linia, ':');
                 linia = ZwrocOdPierwszego(linia, ':');
                 Console.WriteLine(linia);
-
+                //jdcwgusyjxfegdysxjgfedrh
                 kaucjazwrotna = ZwrocPierwsze(linia, ':'); ;
                 Console.WriteLine(linia);
 
