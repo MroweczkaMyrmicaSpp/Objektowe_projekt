@@ -130,7 +130,7 @@ namespace Objektowe_2025_11_07_projekt
                         }
                     } while (cozrobic=="0" || cozrobic == "1" || cozrobic == "2" || cozrobic == "3");
                 }
-                else if (typ == "kajak mały")
+                else if (typ == "kajak  mały")
                 {
                     string cozrobic;
                     do
