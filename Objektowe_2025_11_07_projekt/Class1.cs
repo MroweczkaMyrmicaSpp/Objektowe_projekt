@@ -118,7 +118,7 @@ namespace Objektowe_2025_11_07_projekt
             }
             else { Console.WriteLine("Bez patentu nie wynajmujemy"); }
         }
-    }
+    }// Brawo Włochy
     /*
     public class Kajak : Sprzentwodny
     {
