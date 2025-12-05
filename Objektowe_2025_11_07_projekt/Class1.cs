@@ -23,7 +23,7 @@ namespace Objektowe_2025_11_07_projekt
             this.ilesztukwmagazynie = ilesztukwmagazynie;
             this.kaucjazwrotna = kaucjazwrotna;
         }
-        public void WynajmijPojazd(float ileplaci, int nailedniwynajmuje, int ilesztukwynajmuje)
+        public void WynajmijPojazd(float ileplaci, int ilesztukwynajmuje, int nailedniwynajmuje)
         {
             if (ilesztukwmagazynie >= ilesztukwynajmuje)
             {
@@ -31,7 +31,7 @@ namespace Objektowe_2025_11_07_projekt
                 if (ileplaci >= cena)
                 {
 
-                    ilesztukwmagazynie = -ilesztukwynajmuje;
+                    ilesztukwmagazynie = ilesztukwmagazynie-ilesztukwynajmuje;
                     Console.WriteLine(ileplaci - cena + " reszty");
                 }
                 else
@@ -47,7 +47,7 @@ namespace Objektowe_2025_11_07_projekt
         public void IleSztukWMagazynie()
         {
 
-            Console.WriteLine(ilesztukwmagazynie);
+            Console.WriteLine("W magazynie jest: "+ilesztukwmagazynie+" sztuk");
 
         }
         public void Odddajsprzet(bool czyuszkodzony, int ilesztukwynajmuje)
@@ -57,7 +57,7 @@ namespace Objektowe_2025_11_07_projekt
                 if (ilesztukwmagazynie >= 1)
                 {
                     ilesztukwmagazynie += ilesztukwynajmuje;
-                    Console.WriteLine(ilesztukwmagazynie + "Sztuk w magazynie należy oddać" + kaucjazwrotna);
+                    Console.WriteLine(ilesztukwmagazynie + " Sztuk w magazynie należy oddać " + kaucjazwrotna+" zł");
                 }
             }
             else
@@ -71,12 +71,16 @@ namespace Objektowe_2025_11_07_projekt
         }
         public float CenaZadzien()
         {
-            return cenawynajmunadzien+kaucjazwrotna;
+            return cenawynajmunadzien;
+        }
+        public float KaucjaZwrotna()
+        {
+            return kaucjazwrotna;
         }
         public void ZapiszDoPliku(string nazwaobiektu, bool czyostatni)
         {
-            string zapis =nazwaobiektu+":"+wypornosc.ToString()+":"+cenawynajmunadzien.ToString()+":"+ maxliczbaosobnapojazd.ToString() + ":" + ilesztukwmagazynie.ToString() + ":" + kaucjazwrotna.ToString();
-            if (czyostatni == false) { zapis +=":\n"; }
+            string zapis =nazwaobiektu+":"+wypornosc.ToString()+":"+cenawynajmunadzien.ToString()+":"+ maxliczbaosobnapojazd.ToString() + ":" + ilesztukwmagazynie.ToString() + ":" + kaucjazwrotna.ToString()+":";
+            if (czyostatni == false) { zapis +="\n"; }
             File.AppendAllText("sprzet.txt", zapis);
         }
     }

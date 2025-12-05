@@ -1,5 +1,5 @@
 ﻿using System.Collections.Specialized;
-
+//zbieraj dane kto to wynajoł i ile jest na wodzie. ile wynajentych a ile na wodzie, wiem kto oddaje pojazd, który pesel zwraca towar. kilka plików dla oddawania produktów
 namespace Objektowe_2025_11_07_projekt
 {
     internal class Program
@@ -34,26 +34,26 @@ namespace Objektowe_2025_11_07_projekt
                 string nazwa, wypornosc, cena, ileosob, ilesztuk, kaucjazwrotna;
                 nazwa = ZwrocPierwsze(linia, ':');
                 linia = ZwrocOdPierwszego(linia,':');
-                Console.WriteLine(linia);
+                //Console.WriteLine(linia);
 
                 wypornosc = ZwrocPierwsze(linia, ':');
                 linia = ZwrocOdPierwszego(linia, ':');
-                Console.WriteLine(linia);
+                //Console.WriteLine(linia);
 
                 cena = ZwrocPierwsze(linia, ':');
                 linia = ZwrocOdPierwszego(linia, ':');
-                Console.WriteLine(linia);
+                //Console.WriteLine(linia);
 
                 ileosob = ZwrocPierwsze(linia, ':');
                 linia = ZwrocOdPierwszego(linia, ':');
-                Console.WriteLine(linia);
+                //Console.WriteLine(linia);
 
                 ilesztuk = ZwrocPierwsze(linia, ':');
                 linia = ZwrocOdPierwszego(linia, ':');
-                Console.WriteLine(linia);
+                //Console.WriteLine(linia);
                 //jdcwgusyjxfegdysxjgfedrh
                 kaucjazwrotna = ZwrocPierwsze(linia, ':'); ;
-                Console.WriteLine(linia);
+                //Console.WriteLine(linia);
 
                 if (nazwa == "katamaran")
                 {
@@ -74,7 +74,7 @@ namespace Objektowe_2025_11_07_projekt
             {
 
 
-                Console.WriteLine("Typ pojazdu");
+                Console.WriteLine("Typ pojazdu? są kajak duży, kajak mały, katamaran");
                 string typ = Console.ReadLine();
 
                 if (typ == "katamaran")
@@ -82,11 +82,11 @@ namespace Objektowe_2025_11_07_projekt
                     string cozrobic;
                     do
                     {
-                        Console.WriteLine("Co robisz?: Wynajmij 0, IleSztukWMagazynie 1, Odddajsprzet 2, NowySprzet 3, co innego wyjdź");
+                        Console.WriteLine("Co robisz?: Wynajmij 0, IleSztukWMagazynie 1, Odddajsprzet 2, NowySprzet 3, Sprzęt naprawiony 4; co innego wyjdź");
                         cozrobic = Console.ReadLine();
                         if (cozrobic == "0")
                         {
-                            Console.WriteLine("ile klient płaci? wynajem na dziań kosztuje" + katamaran.CenaZadzien());
+                            Console.WriteLine("ile klient płaci? wynajem na dziań kosztuje " + katamaran.CenaZadzien()+"zł a kaucja zwrotna wynosi "+katamaran.KaucjaZwrotna()+"zł");
                             string placi = Console.ReadLine();
 
                             Console.WriteLine("czy ma patent? tak / nie");
@@ -115,7 +115,7 @@ namespace Objektowe_2025_11_07_projekt
                                 Console.WriteLine("czy uszkodzony? tak/nie");
                                 uszkodzony = Console.ReadLine();
                             }
-                            while (uszkodzony != "tak" || uszkodzony == "nie");
+                            while (uszkodzony != "tak" && uszkodzony != "nie");
                             if (uszkodzony == "tak") { czyuszkodzony = true; }
                             else { czyuszkodzony = false; }
                             katamaran.Odddajsprzet(czyuszkodzony, 1);
@@ -124,9 +124,13 @@ namespace Objektowe_2025_11_07_projekt
                         {
                             katamaran.NowySprzet();
                         }
+                        if (cozrobic == "4")
+                        {
+                            katamaran.NowySprzet();
+                        }
                     } while (cozrobic=="0" || cozrobic == "1" || cozrobic == "2" || cozrobic == "3");
                 }
-                else if (typ == "kajakmaly")
+                else if (typ == "kajak mały")
                 {
                     string cozrobic;
                     do
@@ -159,7 +163,7 @@ namespace Objektowe_2025_11_07_projekt
                                 Console.WriteLine("czy uszkodzony? tak/nie");
                                 uszkodzony = Console.ReadLine();
                             }
-                            while (uszkodzony != "tak" || uszkodzony == "nie");
+                            while (uszkodzony != "tak" && uszkodzony != "nie");
                             if (uszkodzony == "tak") { czyuszkodzony = true; }
                             else { czyuszkodzony = false; }
                             kajakmaly.Odddajsprzet(czyuszkodzony, 1);
@@ -168,9 +172,13 @@ namespace Objektowe_2025_11_07_projekt
                         {
                             kajakmaly.NowySprzet();
                         }
+                        if (cozrobic == "4")
+                        {
+                            katamaran.NowySprzet();
+                        }
                     } while (cozrobic == "0" || cozrobic == "1" || cozrobic == "2" || cozrobic == "3");
                 }
-                else if (typ == "kajakduzy")
+                else if (typ == "kajak duży")
                 {
                     string cozrobic;
                     do
@@ -203,7 +211,7 @@ namespace Objektowe_2025_11_07_projekt
                                 Console.WriteLine("czy uszkodzony? tak/nie");
                                 uszkodzony = Console.ReadLine();
                             }
-                            while (uszkodzony != "tak" || uszkodzony == "nie");
+                            while (uszkodzony != "tak" && uszkodzony != "nie");
                             if (uszkodzony == "tak") { czyuszkodzony = true; }
                             else { czyuszkodzony = false; }
                             kajakduzy.Odddajsprzet(czyuszkodzony, 1);
@@ -211,6 +219,10 @@ namespace Objektowe_2025_11_07_projekt
                         if (cozrobic == "3")
                         {
                             kajakduzy.NowySprzet();
+                        }
+                        if (cozrobic == "4")
+                        {
+                            katamaran.NowySprzet();
                         }
                     } while (cozrobic == "0" || cozrobic == "1" || cozrobic == "2" || cozrobic == "3");
                 }
